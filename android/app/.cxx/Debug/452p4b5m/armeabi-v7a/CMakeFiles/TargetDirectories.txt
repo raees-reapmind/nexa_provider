@@ -1,0 +1,2 @@
+/Users/mayankmodi/Documents/Project/github/emart-ondemand/emart_provider/android/app/.cxx/Debug/452p4b5m/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/mayankmodi/Documents/Project/github/emart-ondemand/emart_provider/android/app/.cxx/Debug/452p4b5m/armeabi-v7a/CMakeFiles/rebuild_cache.dir
