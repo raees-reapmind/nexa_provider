@@ -7,10 +7,25 @@ allprojects {
 
 rootProject.buildDir = '../build'
 subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    if (project.name == 'app') {
+        project.buildDir = "${rootProject.buildDir}/${project.name}"
+    } else {
+        // Plugins use their default build directory (usually within their own folders)
+        // to avoid "different roots" error when the project and pub cache are on different drives.
+    }
 }
 subprojects {
-     project.evaluationDependsOn(':app')
+    afterEvaluate { project ->
+        if (project.hasProperty('android')) {
+            project.android {
+                if (namespace == null) {
+                    namespace project.group
+                }
+            }
+        }
+    }
+}
+subprojects {
     configurations.configureEach {
         resolutionStrategy {
             force 'pl.droidsonroids.gif:android-gif-drawable:1.2.25'

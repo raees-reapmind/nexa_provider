@@ -50,12 +50,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR_ANDROID_API_KEY',
-    appId: 'YOUR_ANDROID_APP_ID',
-    messagingSenderId: 'YOUR_ANDROID_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_ANDROID_PROJECT_ID',
-    databaseURL: 'YOUR_ANDROID_DATABASE_URL',
-    storageBucket: 'YOUR_ANDROID_STORAGE_BUCKET',
+    apiKey: 'AIzaSyARiVFpXDiXy_6W7l3UtEkCPNr0_A6_TWk',
+    appId: '1:201686143127:android:5bb4824eff122e6c1c59d2',
+    messagingSenderId: '201686143127',
+    projectId: 'emart-fc547',
+    databaseURL: 'https://emart-fc547-default-rtdb.firebaseio.com',
+    storageBucket: 'emart-fc547.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
