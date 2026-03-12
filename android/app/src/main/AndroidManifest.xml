@@ -21,7 +21,7 @@
 
 
     <application
-        android:label="Nexa Provider"
+        android:label="Provider"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
