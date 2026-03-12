@@ -34,10 +34,10 @@ class User with ChangeNotifier {
 
   UserBankDetails userBankDetails;
 
-  num walletAmount;
+  dynamic walletAmount;
   Timestamp? createdAt;
-  num reviewsCount;
-  num reviewsSum;
+  dynamic reviewsCount;
+  dynamic reviewsSum;
 
   String? subscriptionPlanId;
   Timestamp? subscriptionExpiryDate;
@@ -72,7 +72,8 @@ class User with ChangeNotifier {
     this.adminCommission,
   })  : this.lastOnlineTimestamp = lastOnlineTimestamp ?? Timestamp.now(),
         this.userBankDetails = userBankDetails ?? UserBankDetails(),
-        this.appIdentifier = 'Flutter eMart Provider Dashboard ${Platform.operatingSystem}',
+        this.appIdentifier =
+            'Flutter eMart Provider Dashboard ${Platform.operatingSystem}',
         this.location = location ?? UserLocation();
 
   String fullName() {
@@ -81,28 +82,39 @@ class User with ChangeNotifier {
 
   factory User.fromJson(Map<String, dynamic> parsedJson) {
     return User(
-      adminCommission: parsedJson.containsKey('adminCommission') ? AdminCommissionModel.fromJson(parsedJson['adminCommission']) : null,
+      adminCommission: parsedJson.containsKey('adminCommission')
+          ? AdminCommissionModel.fromJson(parsedJson['adminCommission'])
+          : null,
       walletAmount: parsedJson['wallet_amount'] ?? 0.0,
       email: parsedJson['email'] ?? '',
       firstName: parsedJson['firstName'] ?? '',
       lastName: parsedJson['lastName'] ?? '',
-      active: ((parsedJson.containsKey('active')) ? parsedJson['active'] : parsedJson['isActive']) ?? false,
+      active: ((parsedJson.containsKey('active'))
+              ? parsedJson['active']
+              : parsedJson['isActive']) ??
+          false,
       lastOnlineTimestamp: parsedJson['lastOnlineTimestamp'],
       phoneNumber: parsedJson['phoneNumber'] ?? '',
       userID: parsedJson['id'] ?? parsedJson['userID'] ?? '',
       profilePictureURL: parsedJson['profilePictureURL'] ?? '',
       fcmToken: parsedJson['fcmToken'] ?? '',
-      location: parsedJson.containsKey('location') ? UserLocation.fromJson(parsedJson['location']) : UserLocation(),
+      location: parsedJson.containsKey('location')
+          ? UserLocation.fromJson(parsedJson['location'])
+          : UserLocation(),
       photos: parsedJson['photos'] ?? [].cast<dynamic>(),
       role: parsedJson['role'] ?? '',
       createdAt: parsedJson['createdAt'],
-      userBankDetails: parsedJson.containsKey('userBankDetails') ? UserBankDetails.fromJson(parsedJson['userBankDetails']) : UserBankDetails(),
+      userBankDetails: parsedJson.containsKey('userBankDetails')
+          ? UserBankDetails.fromJson(parsedJson['userBankDetails'])
+          : UserBankDetails(),
       reviewsCount: parsedJson['reviewsCount'] ?? 0,
       reviewsSum: parsedJson['reviewsSum'] ?? 0,
       subscriptionPlanId: parsedJson['subscriptionPlanId'],
       subscriptionExpiryDate: parsedJson['subscriptionExpiryDate'],
       subscriptionTotalOrders: parsedJson['subscriptionTotalOrders'],
-      subscriptionPlan: parsedJson['subscription_plan'] != null ? SubscriptionPlanModel.fromJson(parsedJson['subscription_plan']) : null,
+      subscriptionPlan: parsedJson['subscription_plan'] != null
+          ? SubscriptionPlanModel.fromJson(parsedJson['subscription_plan'])
+          : null,
       section_id: parsedJson['section_id'] ?? '',
     );
   }
@@ -176,7 +188,13 @@ class UserSettings {
 
   bool reststatus;
 
-  UserSettings({this.pushNewMessages = false, this.orderUpdates = false, this.newArrivals = false, this.promotions = false, this.photos = false, this.reststatus = false});
+  UserSettings(
+      {this.pushNewMessages = false,
+      this.orderUpdates = false,
+      this.newArrivals = false,
+      this.promotions = false,
+      this.photos = false,
+      this.reststatus = false});
 
   factory UserSettings.fromJson(Map<dynamic, dynamic> parsedJson) {
     return UserSettings(
@@ -189,7 +207,14 @@ class UserSettings {
   }
 
   Map<String, dynamic> toJson() {
-    return {'pushNewMessages': pushNewMessages, 'orderUpdates': orderUpdates, 'newArrivals': newArrivals, 'promotions': promotions, 'photos': photos, 'reststatus': reststatus};
+    return {
+      'pushNewMessages': pushNewMessages,
+      'orderUpdates': orderUpdates,
+      'newArrivals': newArrivals,
+      'promotions': promotions,
+      'photos': photos,
+      'reststatus': reststatus
+    };
   }
 }
 
@@ -203,7 +228,9 @@ class UserLocation {
   factory UserLocation.fromJson(Map<dynamic, dynamic> parsedJson) {
     double userlat = 0.1, userlog = 0.1;
 
-    if (parsedJson.containsKey('latitude') && parsedJson['latitude'] != null && parsedJson['latitude'] != '') {
+    if (parsedJson.containsKey('latitude') &&
+        parsedJson['latitude'] != null &&
+        parsedJson['latitude'] != '') {
       if (parsedJson['latitude'] is double) {
         userlat = parsedJson['latitude'];
       }
@@ -212,7 +239,9 @@ class UserLocation {
       }
     }
 
-    if (parsedJson.containsKey('longitude') && parsedJson['longitude'] != null && parsedJson['longitude'] != '') {
+    if (parsedJson.containsKey('longitude') &&
+        parsedJson['longitude'] != null &&
+        parsedJson['longitude'] != '') {
       if (parsedJson['longitude'] is double) {
         userlog = parsedJson['longitude'];
       }
