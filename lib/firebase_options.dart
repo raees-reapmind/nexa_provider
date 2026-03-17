@@ -59,15 +59,15 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'YOUR_IOS_API_KEY',
-    appId: 'YOUR_IOS_APP_ID',
-    messagingSenderId: 'YOUR_IOS_MESSAGING_SENDER_ID',
-    projectId: 'YOUR_IOS_PROJECT_ID',
-    databaseURL: 'YOUR_IOS_DATABASE_URL',
-    storageBucket: 'YOUR_IOS_STORAGE_BUCKET',
-    androidClientId: 'YOUR_ANDROID_CLIENT_ID',
-    iosClientId: 'YOUR_IOS_CLIENT_ID',
-    iosBundleId: 'YOUR_IOS_BUNDLE_ID',
+    apiKey: 'AIzaSyDt4xW8uvrG388ybuHWzC81AgmKKw3MlP0',
+    appId: '1:201686143127:ios:6beebe53ab0401cb1c59d2',
+    messagingSenderId: '201686143127',
+    projectId: 'emart-fc547',
+    databaseURL: 'https://emart-fc547-default-rtdb.firebaseio.com',
+    storageBucket: 'emart-fc547.firebasestorage.app',
+    androidClientId: '201686143127-26k2cmhd0kql8h5bufcmck056u2bt5vh.apps.googleusercontent.com',
+    iosClientId: '201686143127-va902601baarjj5ai99ftf969c27ejvp.apps.googleusercontent.com',
+    iosBundleId: 'emart.app.provider',
   );
 
 }
