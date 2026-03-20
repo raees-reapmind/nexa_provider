@@ -90,72 +90,38 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   void initializeFlutterFire() async {
     try {
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc('vendor')
-          .get()
-          .then((value) {
+      await FirebaseFirestore.instance.collection(Setting).doc('vendor').get().then((value) {
         isSubscriptionModelApplied = value.data()!['subscription_model'];
       });
 
       /// Wait for Firebase to initialize and set `_initialized` state to true
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc("ContactUs")
-          .get()
-          .then((value) {
+      await FirebaseFirestore.instance.collection(Setting).doc("ContactUs").get().then((value) {
         adminEmail = value.data()!['Email'].toString();
       });
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc("Version")
-          .get()
-          .then((value) {
+      await FirebaseFirestore.instance.collection(Setting).doc("Version").get().then((value) {
         appVersion = value.data()!['app_version'].toString();
         providerUrl = value.data()!['providerUrl'].toString();
       });
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc("googleMapKey")
-          .get()
-          .then((value) {
+      await FirebaseFirestore.instance.collection(Setting).doc("googleMapKey").get().then((value) {
         GOOGLE_API_KEY = value.data()!['key'].toString();
       });
 
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc("notification_setting")
-          .get()
-          .then((value) {
+      await FirebaseFirestore.instance.collection(Setting).doc("notification_setting").get().then((value) {
         print(value.data());
         senderId = value.data()!['senderId'].toString();
         jsonNotificationFileURL = value.data()!['serviceJson'].toString();
       });
 
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc("globalSettings")
-          .get()
-          .then((value) {
-        AppColors.colorPrimary = Color(int.parse(value
-            .data()!['provider_app_color']
-            .toString()
-            .replaceFirst("#", "0xff")));
+      await FirebaseFirestore.instance.collection(Setting).doc("globalSettings").get().then((value) {
+        AppColors.colorPrimary =
+            Color(int.parse(value.data()!['provider_app_color'].toString().replaceFirst("#", "0xff")));
       });
 
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc("DriverNearBy")
-          .get()
-          .then((value) {
+      await FirebaseFirestore.instance.collection(Setting).doc("DriverNearBy").get().then((value) {
         selectedMapType = value.data()!['selectedMapType'].toString();
       });
 
-      await FirebaseFirestore.instance
-          .collection(Setting)
-          .doc("emailSetting")
-          .get()
-          .then((value) {
+      await FirebaseFirestore.instance.collection(Setting).doc("emailSetting").get().then((value) {
         if (value.exists) {
           mailSettings = MailSettings.fromJson(value.data()!);
         }
@@ -177,8 +143,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   void getCurrentAppTheme() async {
-    themeChangeProvider.darkTheme =
-        await themeChangeProvider.darkThemePreference.getTheme();
+    themeChangeProvider.darkTheme = await themeChangeProvider.darkThemePreference.getTheme();
   }
 
   @override
@@ -191,7 +156,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver {
         builder: (context, value, child) {
           return GetMaterialApp(
               navigatorKey: navigatorKey,
-              title: 'eMart Provider',
+              title: 'Provider',
               debugShowCheckedModeBanner: false,
               theme: Styles.themeData(
                   themeChangeProvider.darkTheme == 0

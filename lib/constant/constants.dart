@@ -26,7 +26,7 @@ const CATEGORIES = 'provider_categories';
 const STORAGE_ROOT = 'emart';
 String senderId = '';
 String jsonNotificationFileURL = '';
-String GOOGLE_API_KEY = '';
+String GOOGLE_API_KEY = 'AIzaSyCKWnlw6qpWOfApKF72QGGLIAVfSafNmLI';
 String selectedMapType = '';
 const USER_ROLE_PROVIDER = 'provider';
 const USERS = 'users';
@@ -114,8 +114,7 @@ bool isExpire(User userModel) {
 Widget showEmptyView({required String message}) {
   return Center(
     child: Text(message,
-        textAlign: TextAlign.center,
-        style: const TextStyle(fontFamily: AppThemeData.medium, fontSize: 18)),
+        textAlign: TextAlign.center, style: const TextStyle(fontFamily: AppThemeData.medium, fontSize: 18)),
   );
 }
 
@@ -188,15 +187,12 @@ String amountShow({required String? amount}) {
   }
 }
 
-Widget emptyView(
-    {required String text, required DarkThemeProvider themeChange}) {
+Widget emptyView({required String text, required DarkThemeProvider themeChange}) {
   return Center(
     child: Text(
       text,
       style: TextStyle(
-          color: themeChange.getTheme()
-              ? AppColors.colorLightGrey
-              : AppColors.assetColorGrey600,
+          color: themeChange.getTheme() ? AppColors.colorLightGrey : AppColors.assetColorGrey600,
           fontFamily: AppColors.semiBold,
           fontSize: 20),
     ),
@@ -217,9 +213,7 @@ double getTaxValue({String? amount, TaxModel? taxModel}) {
     if (taxModel.type == "fix") {
       taxVal = double.parse(taxModel.tax.toString());
     } else {
-      taxVal = (double.parse(amount.toString()) *
-              double.parse(taxModel.tax!.toString())) /
-          100;
+      taxVal = (double.parse(amount.toString()) * double.parse(taxModel.tax!.toString())) / 100;
     }
   }
   return taxVal;
@@ -274,11 +268,7 @@ final smtpServer = SmtpServer(mailSettings!.host.toString(),
     ssl: true,
     allowInsecure: true);
 
-sendMail(
-    {String? subject,
-    String? body,
-    bool? isAdmin = false,
-    List<dynamic>? recipients}) async {
+sendMail({String? subject, String? body, bool? isAdmin = false, List<dynamic>? recipients}) async {
   // Create our message.
 
   print("SENDGMAIL");
@@ -289,8 +279,7 @@ sendMail(
     print(recipients);
   }
   final message = Message()
-    ..from = Address(
-        mailSettings!.userName.toString(), mailSettings!.fromName.toString())
+    ..from = Address(mailSettings!.userName.toString(), mailSettings!.fromName.toString())
     ..recipients = recipients!
     ..subject = subject
     ..text = body

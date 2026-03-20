@@ -72,8 +72,7 @@ class User with ChangeNotifier {
     this.adminCommission,
   })  : this.lastOnlineTimestamp = lastOnlineTimestamp ?? Timestamp.now(),
         this.userBankDetails = userBankDetails ?? UserBankDetails(),
-        this.appIdentifier =
-            'Flutter eMart Provider Dashboard ${Platform.operatingSystem}',
+        this.appIdentifier = 'Provider Dashboard ${Platform.operatingSystem}',
         this.location = location ?? UserLocation();
 
   String fullName() {
@@ -89,18 +88,13 @@ class User with ChangeNotifier {
       email: parsedJson['email'] ?? '',
       firstName: parsedJson['firstName'] ?? '',
       lastName: parsedJson['lastName'] ?? '',
-      active: ((parsedJson.containsKey('active'))
-              ? parsedJson['active']
-              : parsedJson['isActive']) ??
-          false,
+      active: ((parsedJson.containsKey('active')) ? parsedJson['active'] : parsedJson['isActive']) ?? false,
       lastOnlineTimestamp: parsedJson['lastOnlineTimestamp'],
       phoneNumber: parsedJson['phoneNumber'] ?? '',
       userID: parsedJson['id'] ?? parsedJson['userID'] ?? '',
       profilePictureURL: parsedJson['profilePictureURL'] ?? '',
       fcmToken: parsedJson['fcmToken'] ?? '',
-      location: parsedJson.containsKey('location')
-          ? UserLocation.fromJson(parsedJson['location'])
-          : UserLocation(),
+      location: parsedJson.containsKey('location') ? UserLocation.fromJson(parsedJson['location']) : UserLocation(),
       photos: parsedJson['photos'] ?? [].cast<dynamic>(),
       role: parsedJson['role'] ?? '',
       createdAt: parsedJson['createdAt'],
@@ -228,9 +222,7 @@ class UserLocation {
   factory UserLocation.fromJson(Map<dynamic, dynamic> parsedJson) {
     double userlat = 0.1, userlog = 0.1;
 
-    if (parsedJson.containsKey('latitude') &&
-        parsedJson['latitude'] != null &&
-        parsedJson['latitude'] != '') {
+    if (parsedJson.containsKey('latitude') && parsedJson['latitude'] != null && parsedJson['latitude'] != '') {
       if (parsedJson['latitude'] is double) {
         userlat = parsedJson['latitude'];
       }
@@ -239,9 +231,7 @@ class UserLocation {
       }
     }
 
-    if (parsedJson.containsKey('longitude') &&
-        parsedJson['longitude'] != null &&
-        parsedJson['longitude'] != '') {
+    if (parsedJson.containsKey('longitude') && parsedJson['longitude'] != null && parsedJson['longitude'] != '') {
       if (parsedJson['longitude'] is double) {
         userlog = parsedJson['longitude'];
       }
